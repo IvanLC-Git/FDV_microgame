@@ -56,12 +56,6 @@ public class Player : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);
             Bullet balaScript = bullet.GetComponent<Bullet>();
             balaScript.targetVector = transform.right;
-
-            // Ignorar la colisión entre el jugador y la bala
-            Collider bulletCollider = bullet.GetComponent<Collider>();
-            Collider playerCollider = GetComponent<Collider>();
-            Physics.IgnoreCollision(bulletCollider, playerCollider);
-        
         }
         }
     }
