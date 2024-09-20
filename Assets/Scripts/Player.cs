@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);
             Bullet balaScript = bullet.GetComponent<Bullet>();
             balaScript.targetVector = transform.right;
-        }
+        }     
         }
     }
 
