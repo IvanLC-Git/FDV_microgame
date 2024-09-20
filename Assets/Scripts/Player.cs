@@ -66,18 +66,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        
-        if(collision.gameObject.tag == "Enemy")
-        {
-            SCORE = 0;
-            SceneManager.LoadScene("SampleScene");
-        }
-        else
-        {
-            Destroy(collision.gameObject);
-            Debug.Log("He colisionado con otra cosa...");
-        }
-
+    private void OnTriggerEnter(Collider other) {
+    if(other.gameObject.tag == "Bullet")
+    {
+        Destroy(other.gameObject);
+       
+    }
+    else if(other.gameObject.tag == "Enemy")
+    {
+        SCORE = 0;
+        SceneManager.LoadScene("SampleScene");
+    }
     }
 }
