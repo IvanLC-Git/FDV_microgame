@@ -54,13 +54,17 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             GameObject bullet = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);
-
             Bullet balaScript = bullet.GetComponent<Bullet>();
-
             balaScript.targetVector = transform.right;
+
+            // Ignorar la colisión entre el jugador y la bala
+            Collider bulletCollider = bullet.GetComponent<Collider>();
+            Collider playerCollider = GetComponent<Collider>();
+            Physics.IgnoreCollision(bulletCollider, playerCollider);
+        
         }
-        }
-    }
+        }
+    }
 
     private void OnCollisionEnter(Collision collision) {
         
@@ -71,6 +75,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            Destroy(collision.gameObject);
             Debug.Log("He colisionado con otra cosa...");
         }
 
